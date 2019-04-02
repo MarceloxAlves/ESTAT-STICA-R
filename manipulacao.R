@@ -25,3 +25,11 @@ base <- read.csv(paste(Directory,  "ex_aula2_t.csv", sep=""),
                  header = TRUE)
 
 names(base) <- c("Sigla", "Codigo","Municipio","Renda")
+
+
+install.packages("dplyr")
+library(dplyr)
+
+base2 <- base %>%  select(Sigla, Codigo, Renda)  %>%
+  group_by(media_salario =  mean(Renda, na.rm = T))
+
